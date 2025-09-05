@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.container {
+  //   border: 2px solid red;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  backface-visibility: hidden;
+  will-change: width;
+  transform: translateZ(0);
+
+  .word {
+    --delay: 0s;
+    backface-visibility: hidden;
+    will-change: width;
+    transform: translateZ(0);
+
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1;
+    font-size: 180px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    text-transform: uppercase;
+
+    span {
+      line-height: 1;
+      display: inline-flex;
+    }
+
+    &[data-is-flash-in="true"] {
+      opacity: 0;
+      animation: in 1s forwards;
+      animation-delay: var(--delay);
+      animation-timing-function: steps(1, end);
+
+      span {
+        white-space: pre;
+      }
+    }
+  }
+
+  .imagesWrapper {
+    height: 156px;
+    display: inline-flex;
+
+    aspect-ratio: 16/9;
+
+    overflow: hidden;
+    width: 0;
+    // width: 10px;
+
+    backface-visibility: hidden;
+    will-change: width;
+    transform: translateZ(0);
+
+    margin: 0 var(--margin);
+
+    img {
+      position: absolute;
+      width: 360px;
+      //   height: 170px;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+  }
+}
+
+.scale {
+  animation-name: scale;
+  animation-timing-function: ease-in-out;
+  animation-duration: 4.66s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  animation-delay: var(--delay);
+}
+
+.scaleUp {
+  animation-name: scaleUp;
+  animation-timing-function: ease-in-out;
+  animation-duration: 0.66s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-delay: 0;
+}
+
+@keyframes scale {
+  0% {
+    width: 0px;
+    margin: 0 var(--margin);
+  }
+  10% {
+    width: 360px;
+    margin: 0 8px;
+  }
+  40% {
+    width: 360px;
+    margin: 0 8px;
+  }
+  50% {
+    width: 0px;
+    margin: 0 var(--margin);
+  }
+  100% {
+    width: 0px;
+    margin: 0 var(--margin);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    width: 0px;
+    // margin: 0 var(--margin);
+  }
+
+  100% {
+    width: 360px;
+    // margin: 0 8px;
+  }
+}
+
+@keyframes in {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
