@@ -40,7 +40,6 @@ const FotografiskaAnimation = ({
   const [hasAnimatedIn, setHasAnimatedIn] = useState(isOnScroll);
 
   const go = () => {
-    console.log("words in", wordsEnded);
     if (wordsEnded++ === words.length - 1) {
       setHasAnimatedIn(true);
     }
@@ -127,23 +126,14 @@ const ImageContainer = ({
   const isInView = useInView(imageWrapperRef); //, { once: false });
 
   useEffect(() => {
-    console.log({
-      isOnScroll,
-      isInView,
-      imageWrapperRef: imageWrapperRef.current,
-    });
     if (isOnScroll && imageWrapperRef.current) {
       if (isInView) {
-        console.log("in view");
         imageWrapperRef.current.classList.add(styles.scaleUp);
       } else {
-        console.log("!in view");
         imageWrapperRef.current.classList.remove(styles.scaleUp);
       }
     }
   }, [isOnScroll, imageWrapperRef, isInView]);
-
-  console.log({ hasAnimatedIn, isOnScroll: !isOnScroll, a: "styles.scale" });
 
   return (
     <div
